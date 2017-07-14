@@ -1,13 +1,19 @@
 package com.etiya.sqldoo.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.etiya.sqldoo.model.Menu;
+import com.etiya.sqldoo.model.SearchColumn;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class SqlDooUtil {
-
+	
+	public static List<Menu> menuList = new ArrayList<Menu>();
+        public static List <SearchColumn> filterList= new ArrayList <SearchColumn>();
 	/**
 	 * json formatinda gelen degeri verilen json tipine gore olusturulan pojo ya ceviriyoruz.
 	 * 
