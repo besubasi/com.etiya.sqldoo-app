@@ -1,5 +1,6 @@
 package com.etiya.sqldoo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
@@ -7,26 +8,32 @@ public class Menu {
 	private int menuId;
 	private int parentMenuId;
 	private int userId;
-	private String name;
-	private boolean isFolder;
-	private boolean isExpanded;
-	private boolean isActive;
+	private String label;
+	private boolean folder;
+	private boolean expanded;
+	private boolean actv;
 	private List<Menu> items;
 
 	public Menu() {
 		super();
 	}
 
-	public Menu(int menuId, int parentMenuId, int userId, String name, boolean isExpanded, boolean isFolder,
-			boolean isActive) {
+	public Menu addItem(Menu menu) {
+		this.getItems().add(menu);
+		return this;
+
+	}
+
+	public Menu(int menuId, int parentMenuId, int userId, String label, boolean folder, boolean expanded,
+			boolean actv) {
 		super();
 		this.menuId = menuId;
 		this.parentMenuId = parentMenuId;
 		this.userId = userId;
-		this.name = name;
-		this.isExpanded = isExpanded;
-		this.isFolder = isFolder;
-		this.isActive = isActive;
+		this.label = label;
+		this.folder = folder;
+		this.expanded = expanded;
+		this.actv = actv;
 	}
 
 	public int getMenuId() {
@@ -53,39 +60,42 @@ public class Menu {
 		this.userId = userId;
 	}
 
-	public String getName() {
-		return name;
+	public String getLabel() {
+		return label;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public boolean isExpanded() {
-		return isExpanded;
-	}
-
-	public void setExpanded(boolean isExpanded) {
-		this.isExpanded = isExpanded;
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 	public boolean isFolder() {
-		return isFolder;
+		return folder;
 	}
 
-	public void setFolder(boolean isFolder) {
-		this.isFolder = isFolder;
+	public void setFolder(boolean folder) {
+		this.folder = folder;
 	}
 
-	public boolean isActive() {
-		return isActive;
+	public boolean isExpanded() {
+		return expanded;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setExpanded(boolean expanded) {
+		this.expanded = expanded;
+	}
+
+	public boolean isActv() {
+		return actv;
+	}
+
+	public void setActv(boolean actv) {
+		this.actv = actv;
 	}
 
 	public List<Menu> getItems() {
+		if(this.items == null)
+			this.items = new ArrayList<Menu>();
+		
 		return items;
 	}
 

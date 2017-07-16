@@ -64,9 +64,9 @@ public class SqlDooController {
      */
     @RequestMapping("/addMenu2")
     @ResponseBody
-    public boolean addMenu2(@RequestParam("name") String name) throws ServletException {
+    public boolean addMenu2(@RequestParam("name") String label) throws ServletException {
         Menu menu = new Menu();
-        menu.setName(name);
+        menu.setLabel(label);
 
         return sqlDooService.addMenu(menu);
     }
