@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.etiya.sqldoo.model.Menu;
 import com.etiya.sqldoo.model.SearchColumn;
 import com.etiya.sqldoo.service.SqlDooService;
+
+/**
+ * 
+ * @author bekir.subasi
+ *
+ */
 
 @RestController
 public class SqlDooController {
@@ -31,6 +39,7 @@ public class SqlDooController {
      * @param request
      * @return
      */
+    @CrossOrigin
     @RequestMapping("/loadDynamicMenuList")
     @ResponseBody
     public List<Menu> loadDynamicMenuList(HttpServletRequest request) throws ServletException {
@@ -50,27 +59,13 @@ public class SqlDooController {
      * @param menu
      * @return
      */
+    @CrossOrigin
     @RequestMapping("/addMenu")
     @ResponseBody
-    public boolean addMenu(Menu menu) throws ServletException {
+    public boolean addMenu(@RequestBody Menu menu) throws ServletException {
         return sqlDooService.addMenu(menu);
     }    
 
-    /**
-     * Report Api
-     *
-     * @param name
-     * @return
-     */
-    @RequestMapping("/addMenu2")
-    @ResponseBody
-    public boolean addMenu2(@RequestParam("name") String label) throws ServletException {
-        Menu menu = new Menu();
-        menu.setLabel(label);
-
-        return sqlDooService.addMenu(menu);
-    }
-    
     
 
     /**
@@ -79,6 +74,7 @@ public class SqlDooController {
      * @return
      * @throws ServletException
      */
+    @CrossOrigin
     @RequestMapping("/listSearchColumn")
     @ResponseBody
     public List<SearchColumn> listSearchColumn(HttpServletRequest request) throws ServletException {
@@ -95,26 +91,14 @@ public class SqlDooController {
      * @param searchColumn
      * @return
      */
+    @CrossOrigin
     @RequestMapping("/addSearchColumn")
     @ResponseBody
-    public boolean addSearchColumn(SearchColumn searchColumn) throws ServletException {
+    public boolean addSearchColumn(@RequestBody SearchColumn searchColumn) throws ServletException {
 
         return sqlDooService.addSearchColumn(searchColumn);
     } 
     
-    /**
-     * Report Api
-     *
-     * @param labelName
-     * @return
-     */
-    @RequestMapping("/addSearchColumn2")
-    @ResponseBody
-    public boolean addSearchColumn2(@RequestParam("labelName") String labelName) throws ServletException {
-        SearchColumn searchColumn = new SearchColumn();
-        searchColumn.setLabelName(labelName);
-        
-        return sqlDooService.addSearchColumn(searchColumn);
-    }     
+ 
 
 }

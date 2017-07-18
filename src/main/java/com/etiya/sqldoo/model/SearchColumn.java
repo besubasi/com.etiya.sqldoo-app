@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.etiya.sqldoo.model;
 
-import java.util.List;
 
 /**
  *
@@ -13,81 +7,113 @@ import java.util.List;
  */
 public class SearchColumn {
 
-    int menuId;
-    String labelName;
-    String type;
-    String filtername;
-    int innerWidth;
-    int outherWidth;
-    private List<SearchColumn> items2;
+	private int menuId;
+	private String label;
+	private String type;
+	private String shortCode;
+	private String criteria;
+	private int width;
+	private String position;
+    
+
 
     public SearchColumn() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    }
 
-    public SearchColumn(int menuId, String labelName, String type, String filtername, int innerWidth, int outherWidth) {
-        this.menuId = menuId;
-        this.labelName = labelName;
-        this.type = type;
-        this.filtername = filtername;
-        this.innerWidth = innerWidth;
-        this.outherWidth = outherWidth;
-    }
 
-    public int getMenuId() {
-        return menuId;
-    }
+	public SearchColumn(int menuId, String label) {
+		super();
+		this.menuId = menuId;
+		this.label = label;
+	}
 
-    public void setMenuId(int menuId) {
-        this.menuId = menuId;
-    }
 
-    public String getLabelName() {
-        return labelName;
-    }
 
-    public void setLabelName(String labelName) {
-        this.labelName = labelName;
-    }
+	public int getMenuId() {
+		return menuId;
+	}
 
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
-    public String getFiltername() {
-        return filtername;
-    }
+	public void setMenuId(int menuId) {
+		this.menuId = menuId;
+	}
 
-    public void setFiltername(String filtername) {
-        this.filtername = filtername;
-    }
 
-    public int getInnerWidth() {
-        return innerWidth;
-    }
 
-    public void setInnerWidth(int innerWidth) {
-        this.innerWidth = innerWidth;
-    }
+	public String getLabel() {
+		return label;
+	}
 
-    public int getOutherWidth() {
-        return outherWidth;
-    }
 
-    public void setOutherWidth(int outherWidth) {
-        this.outherWidth = outherWidth;
-    }
 
-    public List<SearchColumn> getItems2() {
-        return items2;
-    }
+	public void setLabel(String label) {
+		this.label = label;
+	}
 
-    public void setItems2(List<SearchColumn> items2) {
-        this.items2 = items2;
-    }
 
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getShortCode() {
+		return shortCode;
+	}
+
+
+
+	public void setShortCode(String shortCode) {
+		this.shortCode = shortCode;
+	}
+
+
+
+	public String getCriteria() {
+		return criteria;
+	}
+
+
+
+	public void setCriteria(String criteria) {
+		this.criteria = criteria;
+	}
+
+
+
+	public int getWidth() {
+		return width;
+	}
+
+
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+
+
+	public String getPosition() {
+		return position;
+	}
+
+
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+    
+    
 }

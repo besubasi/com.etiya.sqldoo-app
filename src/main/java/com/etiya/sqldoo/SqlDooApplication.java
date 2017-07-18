@@ -34,10 +34,17 @@ public class SqlDooApplication {
 		SqlDooUtil.menuList.add(menu1);
 		SqlDooUtil.menuList.add(menu2);
 
-		SearchColumn search = new SearchColumn(1, "filtertry", "search", "searcmachine", 5, 6);
-		SearchColumn search2 = new SearchColumn(2, "filtertry2", "search2", "searcmachine2", 5, 6);
+		SearchColumn search1 = new SearchColumn(2, "SearchColumn 2.1");
+		SearchColumn search2 = new SearchColumn(2, "SearchColumn 2.2");
+		SearchColumn search3 = new SearchColumn(3, "SearchColumn 3");
+		SearchColumn search4 = new SearchColumn(4, "SearchColumn 4.1");
+		SearchColumn search5 = new SearchColumn(4, "SearchColumn 4.2");
 
-		SqlDooUtil.filterList.add(search);
+		SqlDooUtil.filterList.add(search1);
 		SqlDooUtil.filterList.add(search2);
+		SqlDooUtil.filterList.add(search3);
+		SqlDooUtil.filterList.add(search4);
+		SqlDooUtil.filterList.add(search5);
+		
 	}
 }

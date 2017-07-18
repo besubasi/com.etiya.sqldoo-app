@@ -13,6 +13,10 @@ public class Menu {
 	private boolean expanded;
 	private boolean actv;
 	private List<Menu> items;
+	private String select;
+	private String from;
+	private String where;
+	
 
 	public Menu() {
 		super();
@@ -101,6 +105,30 @@ public class Menu {
 
 	public void setItems(List<Menu> items) {
 		this.items = items;
+	}
+
+	public String getSelect() {
+		return select;
+	}
+
+	public void setSelect(String select) {
+		this.select = select;
+	}
+
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
+	public String getWhere() {
+		return where;
+	}
+
+	public void setWhere(String where) {
+		this.where = where;
 	}
 
 }
