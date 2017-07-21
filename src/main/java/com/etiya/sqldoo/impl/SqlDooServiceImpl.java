@@ -1,5 +1,6 @@
 package com.etiya.sqldoo.impl;
 
+import com.etiya.sqldoo.model.Account;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +26,24 @@ public class SqlDooServiceImpl implements SqlDooService {
     public boolean addMenu(Menu menu) {
         SqlDooUtil.menuList.add(menu);
         return true;
+    }
+
+    @Override
+    public boolean addAccount(Account account) {
+        SqlDooUtil.accountList.add(account);
+        return true;
+    }
+
+    @Override
+    public Account authentication(Account acct) {
+        for (Account account : SqlDooUtil.accountList) {
+            if (account.getUserName().equals(acct.getUserName())
+                    && account.getPassword().equals(acct.getPassword())) {
+                account.setToken(String.valueOf(System.currentTimeMillis()));
+                return account;
+            }
+        }
+        return null;
     }
 
     @Override

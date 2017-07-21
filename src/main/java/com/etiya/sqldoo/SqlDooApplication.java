@@ -1,5 +1,6 @@
 package com.etiya.sqldoo;
 
+import com.etiya.sqldoo.model.Account;
 import java.util.Date;
 
 import org.springframework.boot.SpringApplication;
@@ -45,6 +46,16 @@ public class SqlDooApplication {
 		SqlDooUtil.filterList.add(search3);
 		SqlDooUtil.filterList.add(search4);
 		SqlDooUtil.filterList.add(search5);
-		
+                
+		Account account= new Account(1,"Ertan","yıldız","asdsa");
+                Account account2= new Account(2,"Ertan2","yıldız2","asdsa2");
+                Account account3= new Account(3,"Ertan3","yıldız3","asdsa3");
+                Account account4= new Account(4,"Ertan4","yıldız4","asdsa4");
+                Account account5= new Account(5,"Ertan5","yıldız5","asdsa5");
+                SqlDooUtil.accountList.add(account);
+                SqlDooUtil.accountList.add(account2);
+                SqlDooUtil.accountList.add(account3);
+                SqlDooUtil.accountList.add(account4);
+                SqlDooUtil.accountList.add(account5);
 	}
 }

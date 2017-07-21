@@ -1,5 +1,6 @@
 package com.etiya.sqldoo.util;
 
+import com.etiya.sqldoo.model.Account;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public final class SqlDooUtil {
 	
 	public static List<Menu> menuList = new ArrayList<Menu>();
         public static List <SearchColumn> filterList= new ArrayList <SearchColumn>();
+        public static List<Account> accountList= new ArrayList<Account>();
 	/**
 	 * json formatinda gelen degeri verilen json tipine gore olusturulan pojo ya ceviriyoruz.
 	 * 

@@ -1,5 +1,6 @@
 package com.etiya.sqldoo.controller;
 
+import com.etiya.sqldoo.model.Account;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,11 +18,10 @@ import com.etiya.sqldoo.model.SearchColumn;
 import com.etiya.sqldoo.service.SqlDooService;
 
 /**
- * 
+ *
  * @author bekir.subasi
  *
  */
-
 @RestController
 public class SqlDooController {
 
@@ -51,8 +50,6 @@ public class SqlDooController {
         return sqlDooService.loadDynamicMenuList(userId);
     }
 
-    
-
     /**
      * Report Api
      *
@@ -64,9 +61,30 @@ public class SqlDooController {
     @ResponseBody
     public boolean addMenu(@RequestBody Menu menu) throws ServletException {
         return sqlDooService.addMenu(menu);
-    }    
+    }
 
-    
+    @CrossOrigin
+    @RequestMapping("/addAccount")
+    @ResponseBody
+    public boolean addAccount(@RequestBody Account account) throws ServletException {
+        return sqlDooService.addAccount(account);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/authentication")
+    @ResponseBody
+    public Account authentication(@RequestBody Account account) throws ServletException {
+        if (account == null) {
+            System.out.println("Account parameter is null");
+            return account;
+        }
+        System.out.println("UserName:Password = " + account.getUserName() + ":" + account.getPassword());
+        
+        return sqlDooService.authentication(account);
+
+
+    }
+
 
     /**
      *
@@ -97,8 +115,6 @@ public class SqlDooController {
     public boolean addSearchColumn(@RequestBody SearchColumn searchColumn) throws ServletException {
 
         return sqlDooService.addSearchColumn(searchColumn);
-    } 
-    
- 
+    }
 
 }
