@@ -20,7 +20,7 @@ public class SqlDooApplicationTests {
 	@Test
 	public void test() {
 
-		List<Menu> menuList = sqlDooService.loadDynamicMenuList(1);
+		List<Menu> menuList = sqlDooService.listMyMenu(1);
 		System.out.println("We don't have Token" + menuList);
 
 	}

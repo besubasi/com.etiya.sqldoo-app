@@ -1,6 +1,5 @@
 package com.etiya.sqldoo.controller;
 
-import com.etiya.sqldoo.model.Account;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.etiya.sqldoo.model.Account;
 import com.etiya.sqldoo.model.Menu;
+import com.etiya.sqldoo.model.RequestMenuApi;
 import com.etiya.sqldoo.model.SearchColumn;
 import com.etiya.sqldoo.service.SqlDooService;
 
@@ -32,30 +33,36 @@ public class SqlDooController {
         this.sqlDooService = sqlDooService;
     }
 
-    /**
-     * Report Api
-     *
-     * @param request
-     * @return
-     */
+
     @CrossOrigin
-    @RequestMapping("/loadDynamicMenuList")
+    @RequestMapping("/authenticate")
     @ResponseBody
-    public List<Menu> loadDynamicMenuList(HttpServletRequest request) throws ServletException {
-        String userIdParam = request.getParameter("userId");
+    public Account authenticate(@RequestBody Account account) throws ServletException {
+        if (account == null) 
+            return account;
 
-        //YYYY-MM-DD
-        Integer userId = userIdParam != null && !userIdParam.isEmpty() ? Integer.valueOf(userIdParam) : 0;
-
-        return sqlDooService.loadDynamicMenuList(userId);
+        return sqlDooService.authenticate(account);
     }
+    
+    
+    
+    @CrossOrigin
+    @RequestMapping("/addAccount")
+    @ResponseBody
+    public boolean addAccount(@RequestBody Account account) throws ServletException {
+        return sqlDooService.addAccount(account);
+    }
+    
 
-    /**
-     * Report Api
-     *
-     * @param menu
-     * @return
-     */
+    @CrossOrigin
+    @RequestMapping("/listMyMenu")
+    @ResponseBody
+    public List<Menu> listMyMenu(@RequestBody RequestMenuApi request) throws ServletException {
+        return sqlDooService.listMyMenu(request.getUserId());
+    } 
+    
+
+
     @CrossOrigin
     @RequestMapping("/addMenu")
     @ResponseBody
@@ -63,57 +70,23 @@ public class SqlDooController {
         return sqlDooService.addMenu(menu);
     }
 
-    @CrossOrigin
-    @RequestMapping("/addAccount")
-    @ResponseBody
-    public boolean addAccount(@RequestBody Account account) throws ServletException {
-        return sqlDooService.addAccount(account);
-    }
-
-    @CrossOrigin
-    @RequestMapping("/authentication")
-    @ResponseBody
-    public Account authentication(@RequestBody Account account) throws ServletException {
-        if (account == null) {
-            System.out.println("Account parameter is null");
-            return account;
-        }
-        System.out.println("UserName:Password = " + account.getUserName() + ":" + account.getPassword());
-        
-        return sqlDooService.authentication(account);
 
 
-    }
-
-
-    /**
-     *
-     * @param request
-     * @return
-     * @throws ServletException
-     */
     @CrossOrigin
     @RequestMapping("/listSearchColumn")
     @ResponseBody
     public List<SearchColumn> listSearchColumn(HttpServletRequest request) throws ServletException {
         String menuIdParam = request.getParameter("menuId");
-
         Integer menuId = menuIdParam != null && !menuIdParam.isEmpty() ? Integer.valueOf(menuIdParam) : 0;
+        
         return sqlDooService.listSearchColumn(menuId);
-
     }
 
-    /**
-     * Report Api
-     *
-     * @param searchColumn
-     * @return
-     */
+
     @CrossOrigin
     @RequestMapping("/addSearchColumn")
     @ResponseBody
     public boolean addSearchColumn(@RequestBody SearchColumn searchColumn) throws ServletException {
-
         return sqlDooService.addSearchColumn(searchColumn);
     }
 

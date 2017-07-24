@@ -7,14 +7,17 @@ import com.etiya.sqldoo.model.Menu;
 import com.etiya.sqldoo.model.SearchColumn;
 
 public interface SqlDooService {
+	
 
-    public List<Menu> loadDynamicMenuList(int userId);
+    public Account authenticate(Account account);	
+    public boolean addAccount(Account account);
+    
+
+    public List<Menu> listMyMenu(int userId);
     public boolean addMenu(Menu menu);
     
-    public boolean addAccount(Account account);
-    public Account authentication(Account account);
-    
+
+    public List<SearchColumn> listSearchColumn(Integer menuId);    
     public boolean addSearchColumn(SearchColumn search);
-    public List<SearchColumn> listSearchColumn(Integer menuId);
 
 }
