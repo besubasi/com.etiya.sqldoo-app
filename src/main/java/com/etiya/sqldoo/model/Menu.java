@@ -1,134 +1,158 @@
 package com.etiya.sqldoo.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class Menu {
+@Entity
+@Table(name = "sqldoo_menu")
+public class Menu implements Serializable {
 
-	private int menuId;
-	private int parentMenuId;
-	private int userId;
-	private String label;
-	private boolean folder;
-	private boolean expanded;
-	private boolean actv;
-	private List<Menu> items;
-	private String select;
-	private String from;
-	private String where;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "menu_id")
+    private Integer menuId;
+    @Column(name = "parent_menu_id")
+    private Integer parentMenuId;
+    @Column(name = "user_id")
+    private Integer userId;
+    @Column(name = "label")
+    private String label;
+    @Column(name = "folder")
+    private boolean folder;
+    @Column(name = "expanded")
+    private boolean expanded;
+    @Column(name = "actv")
+    private boolean actv;
+    @OneToMany
+    private List<Menu> items;
+    @Column(name = "sql_select")
+    private String select;
+    @Column(name = "sql_from")
+    private String from;
+    @Column(name = "sql_where")
+    private String where;
 
-	public Menu() {
-		super();
-	}
+    public Menu() {
+        super();
+    }
 
-	public Menu addItem(Menu menu) {
-		this.getItems().add(menu);
-		return this;
+    public Menu addItem(Menu menu) {
+        this.getItems().add(menu);
+        return this;
 
-	}
+    }
 
-	public Menu(int menuId, int parentMenuId, int userId, String label, boolean folder, boolean expanded,
-			boolean actv) {
-		super();
-		this.menuId = menuId;
-		this.parentMenuId = parentMenuId;
-		this.userId = userId;
-		this.label = label;
-		this.folder = folder;
-		this.expanded = expanded;
-		this.actv = actv;
-	}
+    public Menu(Integer menuId, Integer parentMenuId, Integer userId, String label, boolean folder, boolean expanded,
+            boolean actv) {
+        super();
+        this.menuId = menuId;
+        this.parentMenuId = parentMenuId;
+        this.userId = userId;
+        this.label = label;
+        this.folder = folder;
+        this.expanded = expanded;
+        this.actv = actv;
+    }
 
-	public int getMenuId() {
-		return menuId;
-	}
+    public Integer getMenuId() {
+        return menuId;
+    }
 
-	public void setMenuId(int menuId) {
-		this.menuId = menuId;
-	}
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
+    }
 
-	public int getParentMenuId() {
-		return parentMenuId;
-	}
+    public Integer getParentMenuId() {
+        return parentMenuId;
+    }
 
-	public void setParentMenuId(int parentMenuId) {
-		this.parentMenuId = parentMenuId;
-	}
+    public void setParentMenuId(Integer parentMenuId) {
+        this.parentMenuId = parentMenuId;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public String getLabel() {
-		return label;
-	}
+    public String getLabel() {
+        return label;
+    }
 
-	public void setLabel(String label) {
-		this.label = label;
-	}
+    public void setLabel(String label) {
+        this.label = label;
+    }
 
-	public boolean isFolder() {
-		return folder;
-	}
+    public boolean isFolder() {
+        return folder;
+    }
 
-	public void setFolder(boolean folder) {
-		this.folder = folder;
-	}
+    public void setFolder(boolean folder) {
+        this.folder = folder;
+    }
 
-	public boolean isExpanded() {
-		return expanded;
-	}
+    public boolean isExpanded() {
+        return expanded;
+    }
 
-	public void setExpanded(boolean expanded) {
-		this.expanded = expanded;
-	}
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
 
-	public boolean isActv() {
-		return actv;
-	}
+    public boolean isActv() {
+        return actv;
+    }
 
-	public void setActv(boolean actv) {
-		this.actv = actv;
-	}
+    public void setActv(boolean actv) {
+        this.actv = actv;
+    }
 
-	public List<Menu> getItems() {
-		if(this.items == null)
-			this.items = new ArrayList<Menu>();
-		
-		return items;
-	}
+    public List<Menu> getItems() {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
 
-	public void setItems(List<Menu> items) {
-		this.items = items;
-	}
+        return items;
+    }
 
-	public String getSelect() {
-		return select;
-	}
+    public void setItems(List<Menu> items) {
+        this.items = items;
+    }
 
-	public void setSelect(String select) {
-		this.select = select;
-	}
+    public String getSelect() {
+        return select;
+    }
 
-	public String getFrom() {
-		return from;
-	}
+    public void setSelect(String select) {
+        this.select = select;
+    }
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public String getWhere() {
-		return where;
-	}
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
-	public void setWhere(String where) {
-		this.where = where;
-	}
+    public String getWhere() {
+        return where;
+    }
+
+    public void setWhere(String where) {
+        this.where = where;
+    }
 
 }

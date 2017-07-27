@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.etiya.sqldoo.model.Account;
+import com.etiya.sqldoo.model.User;
 import com.etiya.sqldoo.model.Menu;
 import com.etiya.sqldoo.model.SearchColumn;
 import com.etiya.sqldoo.util.SqlDooUtil;
@@ -41,11 +41,11 @@ public class SqlDooApplication {
 		SqlDooUtil.searchList.add(new SearchColumn(4, "SearchColumn 4.1"));
 		SqlDooUtil.searchList.add(new SearchColumn(4, "SearchColumn 4.2"));
 
-		SqlDooUtil.accountList.add(new Account(1, "bekir", "1234", "Bekir SUBAŞI"));
-		SqlDooUtil.accountList.add(new Account(2, "ertan", "1234", "Ertan Yıldız"));
-		SqlDooUtil.accountList.add(new Account(3, "furkan", "1234", "Furkan Yılmaz"));
-		SqlDooUtil.accountList.add(new Account(4, "onur", "1234", "Onur Karaçöp"));
-		SqlDooUtil.accountList.add(new Account(5, "ilyas", "1234", "İlyas Ağlar"));
-
+		SqlDooUtil.userList.add(new User(1,"bekir", "1234", "Bekir SUBAŞI"));
+		SqlDooUtil.userList.add(new User(2,"ertan", "1234", "Ertan Yıldız"));
+		SqlDooUtil.userList.add(new User(3,"furkan", "1234", "Furkan Yılmaz"));
+		SqlDooUtil.userList.add(new User(4,"onur", "1234", "Onur Karaçöp"));
+		SqlDooUtil.userList.add(new User(5,"ilyas", "1234", "İlyas Ağlar"));
+                
 	}
 }
