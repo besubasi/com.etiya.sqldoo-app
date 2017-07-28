@@ -51,7 +51,7 @@ public class SqlDooServiceImpl implements SqlDooService {
     }
 
     @Override
-    public List<Menu> listMyMenu(int userId) {
+    public List<Menu> listMyMenu(Integer userId) {
         List<Menu> myMenuList = new ArrayList<Menu>();
         for (Menu menu : SqlDooUtil.menuList) {
             if (menu.getUserId() > 0 && menu.getUserId() == userId) {

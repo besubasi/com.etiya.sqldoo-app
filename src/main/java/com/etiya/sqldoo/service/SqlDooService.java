@@ -13,7 +13,7 @@ public interface SqlDooService {
     public boolean addUser(User user);
     
 
-    public List<Menu> listMyMenu(int userId);
+    public List<Menu> listMyMenu(Integer userId);
     public boolean addMenu(Menu menu);
     
 
