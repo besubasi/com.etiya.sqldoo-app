@@ -1,16 +1,9 @@
-package com.etiya.sqldoo.model;
+package com.etiya.sqldoo.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "sqldoo_menu")
@@ -20,24 +13,45 @@ public class Menu implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "menu_id")
     private Integer menuId;
+
+    @Basic
     @Column(name = "parent_menu_id")
     private Integer parentMenuId;
+
+    @Basic
     @Column(name = "user_id")
     private Integer userId;
+
+    @Basic
     @Column(name = "label")
     private String label;
+
+    @Basic
     @Column(name = "folder")
     private boolean folder;
+
+    @Basic
     @Column(name = "expanded")
     private boolean expanded;
+
+    @Basic
     @Column(name = "actv")
     private boolean actv;
-    @OneToMany
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "PARENT_MENU_ID",referencedColumnName = "MENU_ID")
     private List<Menu> items;
+
+    @Basic
     @Column(name = "sql_select")
     private String select;
+
+    @Basic
     @Column(name = "sql_from")
     private String from;
+
+    @Basic
     @Column(name = "sql_where")
     private String where;
 
@@ -52,7 +66,7 @@ public class Menu implements Serializable {
     }
 
     public Menu(Integer menuId, Integer parentMenuId, Integer userId, String label, boolean folder, boolean expanded,
-            boolean actv) {
+                boolean actv) {
         super();
         this.menuId = menuId;
         this.parentMenuId = parentMenuId;

@@ -1,4 +1,4 @@
-package com.etiya.sqldoo.model;
+package com.etiya.sqldoo.domain;
 
 public class RequestMenuApi {
 

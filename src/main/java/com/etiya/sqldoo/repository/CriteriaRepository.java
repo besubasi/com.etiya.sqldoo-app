@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.etiya.sqldoo.model;
+package com.etiya.sqldoo.repository;
 
+import com.etiya.sqldoo.entity.Criteria;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 
 /**
  *
- * @author ertan.yildiz
+ * @author bekir.subasi
  */
-public interface MenuRepository extends JpaRepository<Menu,Integer>{
+@Repository
+public interface CriteriaRepository extends JpaRepository<Criteria, Long> {
     
 }
